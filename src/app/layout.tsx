@@ -3,7 +3,7 @@ import "./globals.css";
 import { geistMono, geistSans } from "@/config/fonts";
 
 export const metadata: Metadata = {
-    title: "GameClosh | Reseñas de Videojuegos Honestas y Actualizadas",
+    title: "GameClosh | Juegos y Reseñas",
     description:
         "Descubre reseñas imparciales, análisis detallados y calificaciones de los últimos videojuegos. Comparte tus opiniones y debate con la comunidad gamer.",
     keywords: [
