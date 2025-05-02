@@ -4,9 +4,7 @@ import { geistMono, titleFont } from "@/config/fonts";
 import Link from "next/link";
 
 interface Props {
-    params: {
-        page: string;
-    };
+    params: Promise<{ page: string }>;
 }
 
 export default async function GamesPage({ params }: Props) {
