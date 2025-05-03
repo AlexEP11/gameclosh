@@ -11,7 +11,11 @@ const imagesHero = [
     "/hero/dishonored.webp",
 ];
 
-export const Hero = () => {
+interface Props {
+    title?: boolean;
+}
+
+export const Hero = ({ title = true }: Props) => {
     const [current, setCurrent] = useState(0);
 
     useEffect(() => {
@@ -29,11 +33,13 @@ export const Hero = () => {
             <div className="absolute z-10 inset-0 bg-gradient-to-b from-transparent via-oscuro/70 to-oscuro" />
 
             <div className="absolute top-0 left-0 h-full w-full ">
-                <h1
-                    className={`${titleFont.className} antialiased absolute z-20 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl md:text-7xl font-bold`}
-                >
-                    GameClosh
-                </h1>
+                {title && (
+                    <h1
+                        className={`${titleFont.className} antialiased absolute z-20 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl md:text-7xl font-bold`}
+                    >
+                        GameClosh
+                    </h1>
+                )}
                 <div
                     className="flex transition-transform duration-1000 ease-in-out h-full "
                     style={{ transform: `translateX(-${current * 100}%)` }}
