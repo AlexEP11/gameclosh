@@ -4,9 +4,7 @@ import { titleFont } from "@/config/fonts";
 import { GameDescription, GamePreview } from "@/components";
 
 interface Props {
-    params: {
-        slug: string;
-    };
+    params: Promise<{ slug: string }>;
 }
 
 export default async function GamePage({ params }: Props) {
