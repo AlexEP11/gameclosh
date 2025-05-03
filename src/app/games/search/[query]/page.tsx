@@ -9,9 +9,7 @@ export const metadata: Metadata = {
 };
 
 interface Props {
-    params: {
-        query: string;
-    };
+    params: Promise<{ query: string }>;
 }
 export default async function QueryPage({ params }: Props) {
     const { query } = await params;
