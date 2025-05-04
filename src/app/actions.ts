@@ -47,7 +47,7 @@ export const signUpAction = async (formData: FormData) => {
         return encodedRedirect(
             "error",
             "/sign-up",
-            "Error al guardar nombre de usuario"
+            "Error al guardar nombre de usuario, intenta con otro nombre de usuario"
         );
     }
 
