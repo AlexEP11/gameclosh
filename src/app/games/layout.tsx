@@ -1,6 +1,6 @@
 import { Hero, Navigation } from "@/components";
 
-export default function MoviesLayout({
+export default function GamesLayout({
     children,
 }: {
     children: React.ReactNode;
