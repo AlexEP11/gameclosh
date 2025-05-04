@@ -1,6 +1,6 @@
 import { Hero } from "@/components";
 
-export default async function Layout({
+export default async function ProtectedLayout({
     children,
 }: {
     children: React.ReactNode;

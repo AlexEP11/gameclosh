@@ -1,7 +1,7 @@
 import { getGameDatails, getGameTrailers } from "@/api";
 import { GameDatails, Trailer } from "@/interfaces";
 import { titleFont } from "@/config/fonts";
-import { GameDescription, GamePreview } from "@/components";
+import { GameDescription, GamePreview, GameReviews } from "@/components";
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -39,6 +39,7 @@ export default async function GamePage({ params }: Props) {
                     parentPlatform={gameData.parent_platforms}
                 />
             </section>
+            <GameReviews slug={slug} gameData={gameData} />
         </>
     );
 }
