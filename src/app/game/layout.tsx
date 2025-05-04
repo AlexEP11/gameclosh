@@ -5,7 +5,7 @@ export const metadata: Metadata = {
     title: "GameClosh | Juego ",
 };
 
-export default function MoviesLayout({
+export default function GameLayout({
     children,
 }: {
     children: React.ReactNode;

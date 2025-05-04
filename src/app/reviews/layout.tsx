@@ -1,6 +1,11 @@
 import { Hero, Navigation } from "@/components";
+import { Metadata } from "next";
 
-export default function GamesLayout({
+export const metadata: Metadata = {
+    title: "GameClosh | Mis reseñas",
+};
+
+export default function ReviewsLayout({
     children,
 }: {
     children: React.ReactNode;
