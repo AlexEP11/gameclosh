@@ -23,9 +23,9 @@ export default async function QueryPage({ params }: Props) {
     return (
         <div className="p-6">
             <h1
-                className={`${titleFont.className} text-5xl font-bold mb-6 text-center`}
+                className={`${titleFont.className} text-xl lg:text-5xl font-bold mb-6 text-center overflow-hidden truncate`}
             >
-                {`Resultado de ${query}`}
+                {`Resultados de ${decodeURIComponent(query)}`}
             </h1>
 
             <GamesGrid games={games} />
