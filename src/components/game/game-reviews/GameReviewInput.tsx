@@ -15,6 +15,7 @@ interface Props {
 export const GameReviewInput = ({ gameData, slug }: Props) => {
     const [review, setReview] = useState("");
     const [score, setScore] = useState<number | null>(5);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null); // CAMBIO
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -57,7 +58,23 @@ export const GameReviewInput = ({ gameData, slug }: Props) => {
             id_videogame = newGame.id;
         }
 
-        // 2. Insertar reseña
+        // 2. Verificar si el usuario ya ha publicado una reseña para este juego
+        const { data: existingReview } = await supabase
+            .from("reviews")
+            .select("id")
+            .eq("id_profile", user.id)
+            .eq("id_videogame", id_videogame)
+            .single();
+
+        if (existingReview) {
+            setErrorMessage("Ya has publicado una reseña para este juego.");
+            setTimeout(() => {
+                setErrorMessage(null);
+            }, 5000);
+            return;
+        }
+
+        // 3. Insertar reseña
         const { error: errorReview } = await supabase.from("reviews").insert({
             id_profile: user.id,
             id_videogame,
@@ -68,7 +85,7 @@ export const GameReviewInput = ({ gameData, slug }: Props) => {
         setReview("");
 
         if (errorReview) {
-            console.error("Error insertando reseña:", errorReview.message);
+            console.error("Error insertando reseña:", errorReview?.message);
         }
     };
 
@@ -106,6 +123,12 @@ export const GameReviewInput = ({ gameData, slug }: Props) => {
                     className={`${geistMono.className} mt-5 bg-fuchsia-600 text-white p-2 rounded-md antialiased font-bold cursor-pointer transition-all duration-300  hover:bg-fuchsia-700`}
                 />
             </div>
+
+            {errorMessage && (
+                <div className="my-4 p-3 text-center font-bold rounded-md bg-red-800 text-white">
+                    <p>{errorMessage}</p>
+                </div>
+            )}
         </form>
     );
 };
